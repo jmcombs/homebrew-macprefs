@@ -1,22 +1,38 @@
 class Macprefs < Formula
   desc "Declarative macOS defaults manager"
-  homepage "https://github.com/jmcombs/macprefs"
-  url "https://github.com/jmcombs/macprefs/releases/download/v0.1.0/macprefs-0.1.0"
+  homepage "https://macprefs.app"
+  url "https://github.com/jmcombs/macprefs/releases/download/v0.1.0/macprefs-0.1.0-macos-universal.zip"
   sha256 "REPLACE_WITH_REAL_SHA256"
-  license "Apache-2.0"
+  license :cannot_represent
 
-  depends_on :macos => :sonoma
+  depends_on macos: :sonoma
 
   def install
-    bin.install "macprefs-0.1.0" => "macprefs"
+    bin.install "macprefs"
   end
 
-  def post_install
-    # Optional: run preflight check after install
-    system bin/"macprefs", "preflight"
+  def caveats
+    <<~EOS
+      macprefs is proprietary commercial software with tiered licensing:
+
+      FREE TIER (Personal Use):
+        - Apple domains only (com.apple.*, NSGlobalDomain)
+        - Basic backup and restore functionality
+        - Personal, non-commercial use
+
+      PRO TIER (Commercial License Required):
+        - Third-party domain support
+        - JSON output format
+        - Headless execution (--yes flag)
+        - Advanced rollback features
+        - Commercial use permitted
+
+      For licensing inquiries: licensing@macprefs.app
+      Website: https://macprefs.app
+    EOS
   end
 
   test do
-    assert_match "Declarative macOS defaults manager", shell_output("#{bin}/macprefs --help")
+    system "#{bin}/macprefs", "about"
   end
 end
