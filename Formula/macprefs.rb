@@ -1,9 +1,9 @@
 class Macprefs < Formula
   desc "Declarative macOS defaults manager"
   homepage "https://macprefs.app"
-  url "https://github.com/jmcombs/homebrew-macprefs/releases/download/v0.1.2/macprefs-v0.1.2-macos-universal.zip"
-  sha256 "1a9f4a23a866578f7c552acf9dbe7ac1c50f07658bc1e947ac51b0c328fe708f"
-  version "v0.1.2"
+  url "https://github.com/jmcombs/homebrew-macprefs/releases/download/v0.1.0/macprefs-v0.1.0-macos-universal.zip"
+  sha256 "b5c21aee4e180c4f04be27bc6255241815f27c6fdef5c73aed5682c262155f2a"
+  version "v0.1.0"
   license :cannot_represent
 
   depends_on macos: :sonoma
